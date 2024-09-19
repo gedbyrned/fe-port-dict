@@ -9,11 +9,11 @@ const translatePortugueseApi = axios.create({
 });
 
 // Function to send text to the API for translation
-export const translateText = (text) => {
-    return translatePortugueseApi.post("translate/", { q: text})
+export const translateText = (text, source = "en", target = "pt") => {
+    return translatePortugueseApi.post("translate/", { q: text, source: source, target: target })
         .then((response) => {
             // Ensure you're accessing the correct key from the response
-            return response.data.translated_english_text;
+            return response.data.translated_text;
         })
         .catch((err) => {
             console.error("Error occurred while translating:", err);
