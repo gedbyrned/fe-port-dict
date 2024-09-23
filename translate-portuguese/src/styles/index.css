@@ -1,0 +1,171 @@
+
+body {
+  margin: 0;
+  padding: 0; 
+  background-color: #FFDB58;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  color: green;
+  font-size: 24px;
+} 
+
+.header-img{
+  padding: 0;
+  margin: 0;
+  width: 75px ;
+  height: 50px;
+}
+
+.nav {
+  padding: 10px 20px; /* Padding around the navbar */
+}
+
+.nav ul {
+  color: green;  list-style-type: none; 
+  display: flex; 
+  justify-content: space-around; 
+  margin: 0; 
+  padding: 0; 
+}
+
+.nav li {
+  margin: 0 15px; 
+}
+
+.nav a {
+  
+  color: green; 
+  text-decoration: none; 
+  font-size: 16px; 
+  transition: color 0.3s; 
+}
+
+.nav a:hover {
+  color: #2124eb; /* Change color on hover */
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start; 
+  min-height: 100vh; 
+  padding: 20px; 
+}
+
+.translation-form {
+  background: white; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  padding: 20px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  width: 100%; 
+  max-width: 500px; 
+  margin-top: 20px; 
+  box-sizing: border-box; 
+}
+
+.text-area {
+  width: 100%; 
+  margin-bottom: 10px; 
+  padding: 10px; 
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+  box-sizing: border-box; 
+}
+
+.language-toggle {
+  margin-bottom: 15px; 
+  display: flex;
+  align-items: center;
+}
+
+.slider-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.slider-checkbox {
+  display: none; 
+}
+
+.slider {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.slider-checkbox:checked + .slider {
+  background-color: #007BFF; /* Slider active color */
+}
+
+.slider-checkbox:checked + .slider::before {
+  transform: translateX(30px); /* Move the knob to the right */
+}
+
+.slider-text {
+  font-size: 14px; 
+}
+
+.translate-button {
+  background-color: #007BFF; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+  transition: background-color 0.3s;
+}
+
+.translate-button:hover {
+  background-color: #0056b3;
+}
+
+.translation-result {
+  margin-top: 20px; 
+}
+
+.translation-title {
+  font-size: 20px; 
+  margin-bottom: 10px; 
+}
+
+.translation-text {
+  font-size: 16px; 
+}
+
+.word-of-day {
+  border: 2px solid #333; 
+  border-radius: 10px; 
+  padding: 20px; 
+  margin: 20px auto; 
+  max-width: 400px; 
+  text-align: center; 
+  color: #2124eb;
+
+}
+
+

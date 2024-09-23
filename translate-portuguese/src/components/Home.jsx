@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import '../index.css';
+import '../styles/index.css';
 import { translateText } from '../utils/api';
 import WordOfDay from './WordOfDay';
 
 const Home = () => {
   const [text, setText] = useState('');
   const [translation, setTranslation] = useState('');
-  const [sourceLang, setSourceLang] = useState('en'); // default source language
-  const [targetLang, setTargetLang] = useState('pt'); // default target language
-
+  const [isEnglishToPortuguese, setIsEnglishToPortuguese] = useState(true); // Default to English to Portuguese
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const sourceLang = isEnglishToPortuguese ? 'en' : 'pt';
+    const targetLang = isEnglishToPortuguese ? 'pt' : 'en';
 
     translateText(text, sourceLang, targetLang)
       .then(result => {
@@ -23,40 +24,45 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Welcome to Translate Portuguese</h1>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          name="body"
-          placeholder="Search for translation here..."
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-        />
+    <main className="home-container">
+      <section className="translation-form">
+        <form onSubmit={handleSubmit}>
+          <textarea
+            name="body"
+            placeholder="Type text here to translate..."
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+            rows="4"
+            className="text-area"
+          />
           <br />
 
-          <label>Translate From: </label>
-          <select value={sourceLang} onChange={(e) => setSourceLang(e.target.value)}>
-            <option value="en">English</option>
-            <option value="pt">Portuguese</option>
-          </select>
+          <div className="language-toggle">
+            <label className="slider-label">
+              <input
+                type="checkbox"
+                checked={isEnglishToPortuguese}
+                onChange={() => setIsEnglishToPortuguese(!isEnglishToPortuguese)}
+                className="slider-checkbox"
+              />
+              <span className="slider"></span>
+              <span className="slider-text">{isEnglishToPortuguese ? 'English to Portuguese' : 'Portuguese to English'}</span>
+            </label>
+          </div>
 
-          <label>Translate To: </label>
-          <select value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
-            <option value="pt">Portuguese</option>
-            <option value="en">English</option>
-          </select>
+          <button type="submit" className="translate-button">Translate</button>
+        </form>
 
-          <br />
-        <button type="submit">Submit</button>
-      </form>
-      {translation && (
-        <div>
-          <h2>Translated Text</h2>
-          <p>{translation}</p>
-        </div>
-      )}
+        {translation && (
+          <article className="translation-result">
+            <h2 className="translation-title">Translated Text</h2>
+            <p className="translation-text">{translation}</p>
+          </article>
+        )}
+      </section>
+
       <WordOfDay /> 
-    </div>
+    </main>
   );
 };
 
