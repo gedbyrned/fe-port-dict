@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../index.css';
+import '../styles/index.css';
 import { getDailyWord } from '../utils/api';
 
 const WordOfDay = () => {
@@ -16,13 +16,20 @@ const WordOfDay = () => {
     }, []);  
 
     return (
-        <div>
+        <section className="word-of-day">
             <h1>Word of the Day</h1>
-            <p><strong>Portuguese:</strong> {word.portuguese_word}</p>
-            <p><strong>English:</strong> {word.english_word}</p>
-            <p><strong>Definition:</strong> {word.english_definition}</p>
-        </div>
+            <div>
+                <strong>Portuguese:</strong> {word.portuguese_word}
+            </div>
+            <div>
+                <strong>English:</strong> {word.english_word}
+            </div>
+            <div>
+                <strong>Definition:</strong> {word.english_definition}
+            </div>
+        </section>
     );
 };
 
 export default WordOfDay;
+
