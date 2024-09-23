@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../index.css';
 import { translateText } from '../utils/api';
+import WordOfDay from './WordOfDay';
 
 const Home = () => {
   const [text, setText] = useState('');
@@ -16,8 +17,8 @@ const Home = () => {
       .then(result => {
         setTranslation(result);
       })
-      .catch(err => {
-        console.error("Error during translation:", err);
+      .catch(error => {
+        console.error("Error during translation:", error);
       });
   };
 
@@ -54,6 +55,7 @@ const Home = () => {
           <p>{translation}</p>
         </div>
       )}
+      <WordOfDay /> 
     </div>
   );
 };
