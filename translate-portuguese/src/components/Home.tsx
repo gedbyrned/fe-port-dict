@@ -8,7 +8,7 @@ const Home = () => {
   const [translation, setTranslation] = useState('');
   const [isEnglishToPortuguese, setIsEnglishToPortuguese] = useState(true); // Default to English to Portuguese
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const sourceLang = isEnglishToPortuguese ? 'en' : 'pt';
@@ -32,7 +32,7 @@ const Home = () => {
             placeholder="Type text here to translate..."
             value={text}
             onChange={(event) => setText(event.target.value)}
-            rows="4"
+            rows={4}
             className="text-area"
           />
           <br />
