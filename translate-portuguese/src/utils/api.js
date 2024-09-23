@@ -4,7 +4,7 @@ import axios from "axios";
 const translatePortugueseApi = axios.create({
     baseURL: "http://127.0.0.1:8000/api/",  // Django API base URL
     headers: {
-        "Content-Type": "application/json",  // Explicitly set the content type
+        "Content-Type": "application/json",  
     },
 });
 
@@ -19,3 +19,16 @@ export const translateText = (text, source = "en", target = "pt") => {
             console.error("Error occurred while translating:", err);
         });
 };
+
+
+export const getDailyWord = () => {
+    return translatePortugueseApi.get("dailyWord/")
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            console.error("Error occurred while fetching the daily word:", error);
+        });
+};
+
+
