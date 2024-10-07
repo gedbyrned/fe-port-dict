@@ -27,8 +27,18 @@ export const getDailyWord = () => {
             return response.data;
         })
         .catch((error) => {
-            console.error("Error occurred while fetching the daily word:", error);
+            console.error("Resources could not be retrieved:", error);
         });
 };
+
+export const getResources = () => {
+    return translatePortugueseApi.get("resources/")
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            console.error("Resources could not be retrieved:", error)
+        })
+}
 
 

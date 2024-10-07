@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/index.css';
 import { translateText } from '../utils/api';
 import WordOfDay from './WordOfDay';
+import Resources from './Resources';
 
 const Home = () => {
   const [text, setText] = useState('');
@@ -62,6 +63,7 @@ const Home = () => {
       </section>
 
       <WordOfDay /> 
+      <Resources />
     </main>
   );
 };
