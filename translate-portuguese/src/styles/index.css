@@ -222,3 +222,30 @@ body {
 .resource-url:hover {
   background: #0056b3;
 }
+
+translation-history-container {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  background-color: #f9f9f9; 
+}
+
+.translation-history-list {
+  list-style-type: none; 
+  padding: 0;
+}
+
+.translation-history-item {
+  padding: 10px; 
+  border-bottom: 1px solid #eee; 
+}
+
+.translation-history-item:last-child {
+  border-bottom: none; 
+}
+
+.translation-history-item strong {
+  display: inline-block; 
+  margin-bottom: 5px; 
+}

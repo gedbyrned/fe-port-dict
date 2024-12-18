@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/index.css';
-import { translateText } from '../utils/api';
+import { translateText, getHistory } from '../utils/api';
 import WordOfDay from './WordOfDay';
 import Resources from './Resources';
+import  TranslationHistory, { TranslationItem } from './TranslationHistory';
 
 const Home = () => {
   const [text, setText] = useState('');
   const [translation, setTranslation] = useState('');
   const [isEnglishToPortuguese, setIsEnglishToPortuguese] = useState(true); // Default to English to Portuguese
+  const [history, setHistory] = useState<TranslationItem[]>([]);
+
+  
+  useEffect(() => {
+    getHistory()
+      .then(historyData => {
+        setHistory(historyData);
+      })
+      .catch(error => {
+        console.error("Error fetching translation history:", error);
+      });
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -61,7 +74,7 @@ const Home = () => {
           </article>
         )}
       </section>
-
+      <TranslationHistory history={history}/>
       <WordOfDay /> 
       <Resources />
     </main>

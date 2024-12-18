@@ -41,4 +41,13 @@ export const getResources = () => {
         })
 }
 
+export const getHistory = () => {
+    return translatePortugueseApi.get("history/")
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            console.error("Translation history could not be retrieved:", error)
+        })
+}
 
